@@ -1,0 +1,21 @@
+{
+  "name": "jednadvacet-org",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev --port 2103",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview --port 2103"
+  },
+  "dependencies": {
+    "@counterscale/tracker": "^3.4.1",
+    "@nuxt/content": "^3.11.0",
+    "@nuxt/image": "^2.0.0",
+    "@nuxt/ui": "^4.4.0",
+    "better-sqlite3": "^12.6.2",
+    "nuxt": "^4.3.0",
+    "tailwindcss": "^4.1.18",
+    "typescript": "^5.9.3"
+  }
+}
