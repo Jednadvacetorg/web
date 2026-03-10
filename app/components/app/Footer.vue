@@ -15,15 +15,21 @@ const footerLinks = [
 <template>
   <UFooter class="border-t border-gray-200 dark:border-gray-800 py-8">
     <UContainer>
-      <div class="flex flex-wrap justify-center gap-x-8 gap-y-4 text-sm text-gray-500 dark:text-gray-400">
-        <NuxtLink
-          v-for="link in footerLinks"
-          :key="link.to"
-          :to="link.to"
-          class="hover:text-primary transition-colors"
-        >
-          {{ link.label }}
-        </NuxtLink>
+      <div class="flex flex-col items-center gap-10">
+        <AppSocialMenu />
+
+        <AppNavMenu color="neutral" :ui="{ list: 'flex-wrap justify-center' }" />
+
+        <div class="flex flex-wrap justify-center gap-x-8 gap-y-4 text-sm text-gray-500 dark:text-gray-400">
+          <NuxtLink
+            v-for="link in footerLinks"
+            :key="link.to"
+            :to="link.to"
+            class="hover:text-primary transition-colors"
+          >
+            {{ link.label }}
+          </NuxtLink>
+        </div>
       </div>
     </UContainer>
   </UFooter>
