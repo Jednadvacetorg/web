@@ -9,6 +9,7 @@ export default defineContentConfig({
       source: {
         include: 'blog-articles/**',
         exclude,
+        prefix: '/blog',
       }
     }),
     blogCategories: defineCollection({
@@ -16,6 +17,7 @@ export default defineContentConfig({
       source: {
         include: 'blog-categories/**',
         exclude,
+        prefix: '/blog',
       }
     }),
     communities: defineCollection({

@@ -4,11 +4,8 @@ import type { NitroRouteConfig } from 'nitropack/types'
 import type { H3Event } from 'h3'
 
 
-function onResponse (event: H3Event<globalThis.EventHandlerRequest>, response: Response) {
-  console.log(response)
-}
-
 export const proxyToWpRoutes = [
+  '/',
   '/author',
   '/bitcoin',
   '/bitcoin-pod-vlastni-kontrolou',
@@ -42,5 +39,5 @@ export const proxyToWpRoutes = [
   '/zakladni-orientace-v-dedictvi-bitcoinu',
 ].reduce((a, v) => ({
   ...a,
-  [`${v}/**`]: { proxy: { to: `https://old.jednadvacet.org${v}/**`, onResponse } } as NitroRouteConfig
+  [v]: { proxy: { to: `https://old.jednadvacet.org${v}/**` } } as NitroRouteConfig
 }), {})
