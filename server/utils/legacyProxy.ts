@@ -1,7 +1,6 @@
 
 
 import type { NitroRouteConfig } from 'nitropack/types'
-import type { H3Event } from 'h3'
 
 
 export const proxyToWpRoutes = [

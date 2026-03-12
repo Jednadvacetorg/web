@@ -2,7 +2,7 @@ import { proxyToWpRoutes } from './server/utils/legacyProxy'
 
 
 export default defineNuxtConfig({
-  compatibilityDate: '2024-04-03',
+  compatibilityDate: "2026-03-01",
 
   css: ['~/assets/css/main.css'],
 
@@ -14,8 +14,18 @@ export default defineNuxtConfig({
     '@nuxt/image',
   ],
 
+  nitro: {
+    cloudflare: {
+      deployConfig: true,
+      nodeCompat: true
+    },
+    preset: 'cloudflare_module',
+  },
+
   routeRules: {
     '/cntrscl': { proxy: { to: 'https://analytics.jednadvacet.org/collect' } },
+    '/blog/**': { prerender: true },
+    '/blog': { prerender: true },
     ...proxyToWpRoutes,
   },
 })
