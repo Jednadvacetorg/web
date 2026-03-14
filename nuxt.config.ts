@@ -12,7 +12,7 @@ export default defineNuxtConfig({
     '@nuxt/content',
     '@nuxt/ui',
     '@nuxt/image',
-'./modules/content-redirects',
+    './modules/content-redirects',
   ],
 
   nitro: {
@@ -22,6 +22,20 @@ export default defineNuxtConfig({
       wrangler: {
         assets: {
           html_handling: 'drop-trailing-slash',
+        },
+        d1_databases: [
+          {
+            binding: 'DB',
+            database_name: 'web',
+            database_id: '76d271b2-5335-40ba-81dd-bf7e1ef79522'
+          }
+        ],
+        observability: {
+          enabled: true,
+          logs: {
+            enabled: true,
+            invocation_logs: true,
+          },
         },
       }
     },
@@ -33,5 +47,11 @@ export default defineNuxtConfig({
     '/blog/**': { prerender: true },
     '/blog': { prerender: true },
     ...proxyToWpRoutes,
+  },
+
+  vite: {
+    server: {
+      allowedHosts: true,
+    },
   },
 })
