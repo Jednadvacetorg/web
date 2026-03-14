@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "build": "nuxt build",
-    "dev": "nuxt dev --port 2103",
+    "dev": "nuxt dev --port 2103 --host 0.0.0.0",
     "generate": "nuxt generate",
     "preview": "nuxt preview --port 2103"
   },
@@ -17,5 +17,8 @@
     "nuxt": "^4.3.0",
     "tailwindcss": "^4.1.18",
     "typescript": "^5.9.3"
+  },
+  "devDependencies": {
+    "@types/node": "^24.12.0"
   }
 }
