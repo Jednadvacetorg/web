@@ -12,12 +12,18 @@ export default defineNuxtConfig({
     '@nuxt/content',
     '@nuxt/ui',
     '@nuxt/image',
+'./modules/content-redirects',
   ],
 
   nitro: {
     cloudflare: {
       deployConfig: true,
-      nodeCompat: true
+      nodeCompat: true,
+      wrangler: {
+        assets: {
+          html_handling: 'drop-trailing-slash',
+        },
+      }
     },
     preset: 'cloudflare_module',
   },
