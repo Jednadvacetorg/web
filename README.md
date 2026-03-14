@@ -1,75 +1,9 @@
-# Nuxt Content Starter
+# Jednadvacet.org
 
-Look at the [Nuxt Content documentation](https://content.nuxt.com) to learn more.
+## Správa obsahu
 
-## Setup
+### Blog
 
-Make sure to install dependencies:
-
-```bash
-# npm
-npm install
-
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
-```
-
-## Development Server
-
-Start the development server on `http://localhost:3000`:
-
-```bash
-# npm
-npm run dev
-
-# pnpm
-pnpm dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+- Články se ukládají do `content/blog-articles/` s názvy souborů ve formátu `YYYYMMDD.nazev-clanku.md`
+- Obrázky se ukládají do `public/blog/` s názvy souborů ve formátu `nazev-clanku-obrazek.jpg`
+- V článku se zobruje datum zveřejnění článku, to se nastaví v názvu souboru. (Tedy musí být aktualizováno před schválením v pull requestu.)
