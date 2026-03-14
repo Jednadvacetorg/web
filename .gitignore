@@ -5,6 +5,7 @@
 .nitro
 .cache
 dist
+.wrangler
 
 # Node dependencies
 node_modules
@@ -26,3 +27,4 @@ logs
 pnpm-lock.yaml
 
 old.jednadvacet.org
+public/_redirects
