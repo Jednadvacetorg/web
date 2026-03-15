@@ -43,8 +43,7 @@ export default defineNuxtConfig({
   },
 
   routeRules: {
-    '/cntrsclt': { proxy: { to: 'https://analytics.jednadvacet.org/tracker.js' } }, // Mask tracker URL to avoid blockers.
-    '/cntrsclc': { proxy: { to: 'https://analytics.jednadvacet.org/collect' } },
+        '/cntrsclc': { proxy: { to: 'https://analytics.jednadvacet.org/collect' } }, // Mask tracker collect URL to avoid blockers.
     '/blog/**': { prerender: true },
     '/blog': { prerender: true },
     ...proxyToWpRoutes,
