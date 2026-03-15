@@ -4,44 +4,32 @@ import type { NuxtError } from '#app'
 const props = defineProps<{
   error: NuxtError
 }>()
-
-// Automatické obnovení při 404, aby mohl zasáhnout serverový handler a zobrazit starý web.
-if (import.meta.client && props.error.statusCode === 404) {
-  window.location.reload()
-}
-
-const handleError = () => clearError({ redirect: '/' })
 </script>
 
 <template>
-  <UApp>
-    <UContainer class="min-h-screen flex flex-col items-center justify-center text-center">
-      <template v-if="error.statusCode === 404">
-        <USpinner size="xl" />
+  <NuxtLayout name="wallpaper" bg-src="/app/not-found-wallpaper.png">
+    <div class="max-w-md flex flex-col items-center gap-10 text-white drop-shadow-lg">
+      <h1 class="text-9xl font-bold text-primary/80">
+        {{ error.status }}
+      </h1>
+
+      <div class="text-3xl font-semibold">
+        <template v-if="error.status === 404">Špatná skládka</template>
+        <template v-else>Nastala chyba</template>
+      </div>
+
+      <template v-if="error.status === 404">
+        <p>Nebuť jako <ProseA href="https://forbes.cz/bitcoin-na-skladce-uz-brit-prestal-hledat-prakticka-lekce-jak-neprijit-o-miliardy/" target="_blank">James Howells</ProseA> který beznadějně hledá svůj harddisk s 8 000 bitcoiny na skládce v Newportu.</p>
+        <p>Zkontroluj jestli hledáš na správné adrese nebo se zkus prohrabat od začátku na hlavní stránce.</p>
       </template>
 
-      <div v-else class="space-y-6">
-        <h1 class="text-9xl font-bold text-primary">
-          {{ error.statusCode }}
-        </h1>
+      <p v-else>{{ error.message || 'Omlouváme se, něco se pokazilo.' }}</p>
 
-        <div class="space-y-2">
-          <h2 class="text-3xl font-semibold">
-            Nastala chyba
-          </h2>
-          <p class="text-gray-500 dark:text-gray-400 max-w-md mx-auto">
-            {{ error.message || 'Omlouváme se, něco se pokazilo.' }}
-          </p>
-        </div>
-
-        <div class="flex items-center justify-center gap-4">
-          <UButton
-            size="lg"
-            label="Zpět na úvodní stránku"
-            @click="handleError"
-          />
-        </div>
-      </div>
-    </UContainer>
-  </UApp>
+      <UButton
+        size="lg"
+        label="Zpět na hlavní stránku"
+        href="/"
+      />
+    </div>
+</NuxtLayout>
 </template>
