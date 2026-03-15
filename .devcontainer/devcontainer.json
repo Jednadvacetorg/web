@@ -11,9 +11,9 @@
 	"customizations": {
 		"vscode": {
 			"extensions": [
-				"vue.volar",
+				"mubaidr.vuejs-extension-pack",
+				"dariofuzinato.vue-peek",
 				"heybourn.headwind",
-				"nuxt.mdc",
 				"bradlc.vscode-tailwindcss",
 				"sst-dev.opencode"
 			],
