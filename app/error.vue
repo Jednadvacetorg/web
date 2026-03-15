@@ -27,11 +27,7 @@ const props = defineProps<{
         <ProseP v-else><span>{{ error.message || 'Omlouváme se, něco se pokazilo.' }}</span></ProseP>
       </div>
 
-      <UButton
-        size="lg"
-        label="Zpět na hlavní stránku"
-        href="/"
-      />
+      <UButton size="lg" label="← Zpět na hlavní stránku" href="/" />
     </div>
 </NuxtLayout>
 </template>
@@ -40,6 +36,6 @@ const props = defineProps<{
 @reference "assets/css/main.css";
 
 span {
-  @apply px-2 py-1.5 bg-white box-decoration-clone rounded;
+  @apply px-2 py-1.5 bg-default box-decoration-clone rounded;
 }
 </style>
