@@ -31,7 +31,7 @@ if (!result.value) {
 }
 
 definePageMeta({
-  layout: 'article'
+  layout: 'default'
 })
 </script>
 

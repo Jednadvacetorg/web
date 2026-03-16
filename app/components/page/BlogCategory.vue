@@ -1,12 +1,14 @@
 <script setup lang="ts">
-import type { BlogArticles, BlogCategories } from '#content'
+import type { BlogArticlesCollectionItem, BlogCategoriesCollectionItem } from '@nuxt/content'
+
 
 defineProps<{
-  category?: BlogCategories
+  category?: BlogCategoriesCollectionItem
 }>()
 
+// TODO: list only category
 const { data: articles } = await useAsyncData('blog-articles-list', () => {
-  return queryCollection('blogArticles').order('path', 'DESC').all() as Promise<BlogArticles[]>
+  return queryCollection('blogArticles').order('path', 'DESC').all()
 })
 </script>
 
@@ -21,15 +23,18 @@ const { data: articles } = await useAsyncData('blog-articles-list', () => {
       <ContentRenderer :value="category" />
     </div>
 
-    <UBlogPosts v-if="articles?.length">
+    <UBlogPosts v-if="articles?.length" orientation="vertical">
       <UBlogPost
         v-for="article in articles"
         :key="article.path"
         :title="article.title"
         :description="article.description"
-        :date="article.date ? new Date(article.date) : undefined"
+        :image="article.thumbnail"
+        :date="article.published"
         :badge="article.categories?.[0]"
         :to="article.path"
+        orientation="horizontal"
+        variant="naked"
       />
     </UBlogPosts>
     <p v-else class="text-center text-gray-500 py-8">Žádné články</p>
