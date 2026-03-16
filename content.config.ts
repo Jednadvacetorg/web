@@ -1,4 +1,4 @@
-import { defineContentConfig, defineCollection } from '@nuxt/content'
+import { defineContentConfig, defineCollection, z, property } from '@nuxt/content'
 
 const exclude = ['README.md']
 
@@ -10,8 +10,16 @@ export default defineContentConfig({
         include: 'blog-articles/**',
         exclude,
         prefix: '/blog',
-      }
+      },
+      schema: z.object({
+        published: property(z.string().optional()).editor({ hidden: true }),
+        thumbnail: property(z.string().optional()).editor({ hidden: true }),
+        authors: z.array(z.string()).optional(),
+        categories: z.array(z.string()).optional(),
+        redirect_from: z.array(z.string()).optional(),
+      }).passthrough()
     }),
+
     blogCategories: defineCollection({
       type: 'page',
       source: {
@@ -20,6 +28,7 @@ export default defineContentConfig({
         prefix: '/blog',
       }
     }),
+
     communities: defineCollection({
       type: 'page',
       source: {
@@ -28,6 +37,7 @@ export default defineContentConfig({
         prefix: '/',
       }
     }),
+
     pages: defineCollection({
       type: 'page',
       source: {
@@ -36,6 +46,7 @@ export default defineContentConfig({
         prefix: '/',
       }
     }),
+
     people: defineCollection({
       type: 'page',
       source: {
