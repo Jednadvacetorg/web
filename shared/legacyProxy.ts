@@ -2,8 +2,7 @@
 
 import type { NitroRouteConfig } from 'nitropack/types'
 
-
-export const proxyToWpRoutes = [
+export const wpPaths = [
   '/',
   '/author',
   '/bitcoin',
@@ -21,7 +20,11 @@ export const proxyToWpRoutes = [
   '/pravidla',
   '/tag',
   '/wp-*',
-].reduce((a, v) => ({
+  '/feed/',
+  '/events/?ical=1',
+]
+
+export const proxyToWpRoutes = wpPaths.reduce((a, v) => ({
   ...a,
-  [v]: { proxy: { to: `https://old.jednadvacet.org${v}/**` } } as NitroRouteConfig
+  [v]: { proxy: { to: `https://old.jednadvacet.org${v}` } } as NitroRouteConfig
 }), {})

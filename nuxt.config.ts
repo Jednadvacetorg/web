@@ -1,4 +1,4 @@
-import { proxyToWpRoutes } from './server/utils/legacyProxy'
+import { proxyToWpRoutes } from './shared/legacyProxy'
 
 
 export default defineNuxtConfig({
@@ -12,7 +12,7 @@ export default defineNuxtConfig({
     '@nuxt/content',
     '@nuxt/ui',
     '@nuxt/image',
-    './modules/content-redirects',
+    './shared/contentRedirectsModule',
   ],
 
   nitro: {
