@@ -9,6 +9,9 @@ dist
 
 # Node dependencies
 node_modules
+.agents/skills/
+.claude/skills/
+.cursor/skills/
 
 # Logs
 logs

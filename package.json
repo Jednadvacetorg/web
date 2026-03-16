@@ -3,10 +3,10 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "prepare": "npx skills experimental_install -y",
     "build": "nuxt build",
-    "dev": "nuxt dev --port 2103 --host 0.0.0.0",
-    "generate": "nuxt generate",
-    "preview": "nuxt preview --port 2103"
+    "lint": "nuxt typecheck",
+    "dev": "nuxt dev --port 2103 --host 0.0.0.0"
   },
   "dependencies": {
     "@counterscale/tracker": "^3.4.1",
