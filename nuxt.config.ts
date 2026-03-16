@@ -12,8 +12,13 @@ export default defineNuxtConfig({
     '@nuxt/content',
     '@nuxt/ui',
     '@nuxt/image',
+'@nuxthub/core',
     './shared/contentRedirectsModule',
   ],
+
+  hub: {
+    db: 'sqlite',
+  },
 
   nitro: {
     cloudflare: {
