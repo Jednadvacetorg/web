@@ -18,8 +18,6 @@ const footerLinks = [
       <div class="flex flex-col items-center gap-10">
         <AppSocialMenu />
 
-        <AppNavMenu color="neutral" :ui="{ list: 'flex-wrap justify-center' }" />
-
         <div class="flex flex-wrap justify-center gap-x-8 gap-y-4 text-sm text-gray-500 dark:text-gray-400">
           <NuxtLink
             v-for="link in footerLinks"
