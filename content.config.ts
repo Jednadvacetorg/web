@@ -52,7 +52,12 @@ export default defineContentConfig({
       source: {
         include: 'people/**',
         exclude,
-      }
+      },
+      schema: z.object({
+        avatar: z.string().optional(),
+        donateLnAddress: z.string().optional(),
+        links: z.array(z.string()).optional(),
+      }),
     }),
   },
 })

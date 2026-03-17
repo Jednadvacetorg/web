@@ -18,12 +18,15 @@ defineProps<{
 
         <ContentRenderer :value="article" class="prose dark:prose-invert" />
 
-        <USeparator />
+        <USeparator v-if="article.authors?.length" class="my-6" />
 
-        <!-- <NuxtTime v-if="article.published" :datetime="article.published" /> -->
-          <span v-if="article.authors" class="authors">
-            {{ article.authors.join(', ') }}
-          </span>
+        <div v-if="article.authors?.length" class="authors space-y-4">
+          <AuthorBlock
+            v-for="authorId in article.authors"
+            :key="authorId"
+            :author-id="authorId"
+          />
+        </div>
       </UPageBody>
 
       <template #right>
