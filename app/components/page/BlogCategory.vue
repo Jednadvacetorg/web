@@ -29,7 +29,7 @@ const { data: articles } = await useAsyncData('blog-articles-list', () => {
         :key="article.path"
         :title="article.title"
         :description="article.description"
-        :image="article.thumbnail"
+        :image="article.thumbnail || 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAD0lEQVR4AQEEAPv/AMzMzATMAmVMDHrmAAAAAElFTkSuQmCC'"
         :date="article.published"
         :badge="article.categories?.[0]"
         :to="article.path"
