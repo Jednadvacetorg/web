@@ -1,15 +1,48 @@
 <script setup lang="ts">
-const links = [
-  { label: 'Medojedíci', to: '/medojedici/' },
-  { label: 'Kalendář', to: '/kalendar/' },
-  { label: 'Přispěj nebo získej financování', to: '/finance/' },
-  { label: 'Blog', to: '/blog/' },
-  { label: 'Obchod', to: '/obchod/' },
-  { label: 'Košík', to: '/kosik/' },
-  { label: 'Affiliate odkazy', to: '/partneri/' }
-]
+import type { NavigationMenuItem } from '@nuxt/ui'
+
+const items = ref<NavigationMenuItem[]>([
+  {
+    label: 'Města',
+    children: [
+      { label: 'Brno' },
+      { label: 'Praha' },
+      { label: 'TODO' },
+    ],
+  },
+  {
+    label: 'Kalendář',
+    to: '/kalendar',
+  },
+  {
+    label: 'Podpořit a partneři',
+    to: '/podporit',
+    children: [
+      { label: 'TODO loga s afil linky' },
+      { label: 'Další partneři', to: '/podporit#partneri' },
+      { label: 'Přispět', to: '/podporit#prispet' },
+    ],
+  },
+  {
+    label: 'Blog',
+    to: '/blog',
+    children: [
+      { label: 'Nejnovější články', to: '/blog' },
+      { label: 'TODO vypsat kategorie' },
+    ]
+    // TODO: add blog categories as children
+  },
+  {
+    label: 'O Jednadvacet',
+    children: [
+      { label: 'Lidé', to: '/lide' },
+      { label: 'Medojedíci', to: '/medojedici' },
+      { label: 'Získej financování', to: '/finance' },
+    ],
+  },
+])
 </script>
 
 <template>
-  <UNavigationMenu :items="links" />
+  <UNavigationMenu :items="items" />
 </template>
