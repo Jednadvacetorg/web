@@ -1,12 +1,18 @@
 <script setup lang="ts">
-import type { Communities } from '#content'
+import type { CommunitiesCollectionItem } from '@nuxt/content'
 
 defineProps<{
-  community: Communities
+  community: CommunitiesCollectionItem
 }>()
 </script>
 
 <template>
+  <Head>
+    <Title>{{ community.title }}</Title>
+    <Meta property="og:title" :content="community.title" />
+    <Meta property="og:type" content="website" />
+  </Head>
+
   <div class="max-w-3xl mx-auto py-8 px-4">
     <header class="mb-8">
       <h1 class="text-4xl font-bold">{{ community.title }}</h1>

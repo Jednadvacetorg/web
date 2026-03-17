@@ -1,22 +1,49 @@
 <script setup lang="ts">
-import type { BlogArticlesCollectionItem, BlogCategoriesCollectionItem } from '@nuxt/content'
+import type { BlogCategoriesCollectionItem } from '@nuxt/content'
 
 
-defineProps<{
+const props = defineProps<{
   category?: BlogCategoriesCollectionItem
 }>()
 
-// TODO: list only category
-const { data: articles } = await useAsyncData('blog-articles-list', () => {
-  return queryCollection('blogArticles').order('path', 'DESC').all()
+const config = useRuntimeConfig()
+
+const categoryStem = computed(() => {
+  return props.category?.path?.split('/').pop()
+})
+
+const { data: articles } = await useAsyncData('blog-articles-list', async () => {
+  let query = queryCollection('blogArticles').order('path', 'DESC')
+
+  if (categoryStem.value) {
+    query = query.where('categories', 'LIKE', `%${categoryStem.value}%`)
+  }
+
+  return query.all()
+})
+
+const categoryTitle = computed(() => {
+  return props.category?.title || 'Blog'
+})
+
+const categoryDescription = computed(() => {
+  if (!articles.value?.length) return undefined
+  return articles.value.map(a => a.title).join(', ')
 })
 </script>
 
 <template>
+  <Head>
+    <Title>{{ categoryTitle }}</Title>
+    <Meta name="description" :content="categoryDescription" />
+    <Meta property="og:title" :content="categoryTitle" />
+    <Meta property="og:description" :content="categoryDescription" />
+    <Meta property="og:type" content="website" />
+  </Head>
+
   <div class="max-w-3xl mx-auto py-8 px-4">
     <header class="mb-8">
-      <h1 v-if="category" class="text-4xl font-bold">{{ category.title }}</h1>
-      <h1 v-else class="text-4xl font-bold">Blog</h1>
+      <h1 class="text-4xl font-bold">{{ categoryTitle }}</h1>
     </header>
 
     <div v-if="category?.body" class="mb-8 prose dark:prose-invert">

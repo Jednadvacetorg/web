@@ -4,9 +4,20 @@ import type { BlogArticlesCollectionItem } from '@nuxt/content'
 defineProps<{
   article: BlogArticlesCollectionItem
 }>()
+
+const config = useRuntimeConfig()
 </script>
 
 <template>
+  <Head>
+    <Title>{{ article.title }} | Jednadvacet</Title>
+    <Meta name="description" :content="article.description" />
+    <Meta property="og:title" :content="article.title" />
+    <Meta property="og:description" :content="article.description" />
+    <Meta property="og:image" :content="article.thumbnail" />
+    <Meta property="og:type" content="article" />
+  </Head>
+
   <UContainer>
     <UPage>
       <UPageHeader
