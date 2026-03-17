@@ -17,20 +17,12 @@ export default defineNuxtModule({
 
     nuxt.hook('content:file:afterParse', (ctx) => {
       const content = ctx.content as any
-      const redirectFrom = content.meta?.redirect_from
+      const redirectFrom = content.redirect_from
       if (!redirectFrom?.length) return
 
-      const to = content.path
-
-      let existingContent = ''
-      if (fs.existsSync(redirectsFile)) {
-        existingContent = fs.readFileSync(redirectsFile, 'utf-8')
-      }
-
       for (const from of redirectFrom) {
-        const target = `${to}?utm_source=redirect&utm_from=${encodeURIComponent(from)}`
-        const line = `${from} ${target} 301`
-        if (existingContent.includes(line)) continue
+        const utm = `utm_source=redirect&utm_medium=redirect&utm_campaign=legacy_url&utm_content=${encodeURIComponent(from)}`
+        const line = `${from} ${content.path}?${utm} 301`
         fs.appendFileSync(redirectsFile, line + '\n')
       }
     })
