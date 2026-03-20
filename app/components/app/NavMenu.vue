@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import type { NavigationMenuItem } from '@nuxt/ui'
 
-const items = ref<NavigationMenuItem[]>([
+const { data: blogCategories } = await useBlogCategories()
+
+const items = computed<NavigationMenuItem[]>(() => [
   {
     label: 'Města',
     children: [
@@ -28,9 +30,11 @@ const items = ref<NavigationMenuItem[]>([
     to: '/blog',
     children: [
       { label: 'Nejnovější články', to: '/blog' },
-      { label: 'TODO vypsat kategorie' },
+      ...(blogCategories.value?.map(category => ({
+        label: category.title,
+        to: category.path
+      })) || [])
     ]
-    // TODO: add blog categories as children
   },
   {
     label: 'O Jednadvacet',

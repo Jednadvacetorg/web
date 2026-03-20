@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import type { BlogCategoriesCollectionItem } from '@nuxt/content'
 
-
 const props = defineProps<{
   category?: BlogCategoriesCollectionItem
 }>()
@@ -11,6 +10,8 @@ const config = useRuntimeConfig()
 const categoryStem = computed(() => {
   return props.category?.path?.split('/').pop()
 })
+
+const { data: blogCategories } = await useBlogCategories()
 
 const { data: articles } = await useAsyncData('blog-articles-list', async () => {
   let query = queryCollection('blogArticles').order('path', 'DESC')
@@ -44,6 +45,19 @@ const categoryDescription = computed(() => {
   <div class="max-w-3xl mx-auto py-8 px-4">
     <header class="mb-8">
       <h1 class="text-4xl font-bold">{{ categoryTitle }}</h1>
+
+      <div v-if="!category && blogCategories?.length" class="mt-4 flex flex-wrap gap-2">
+        <UButton
+          v-for="cat in blogCategories"
+          :key="cat.path"
+          :to="cat.path"
+          variant="subtle"
+          color="neutral"
+          size="md"
+        >
+          {{ cat.title }}
+        </UButton>
+      </div>
     </header>
 
     <div v-if="category?.body" class="mb-8 prose dark:prose-invert">
