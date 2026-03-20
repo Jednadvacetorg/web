@@ -6,7 +6,8 @@ const idPattern = /^blogArticles\/blog\/(\d{4})(\d{2})(\d{2})\./
 export default defineTransformer({
   name: 'blog-articles',
   extensions: ['.md'],
-  transform(file) {
+  transform(file: any) {
+    // Extract date from filename
     const match = idPattern.exec(file.id)
     if (match) {
       file.published = `${match[1]}-${match[2]}-${match[3]}`
@@ -15,6 +16,7 @@ export default defineTransformer({
       return file
     }
 
+    // Find thumbnail image
     const findImage = (children: any[][]): string | null => {
       for (const node of children) {
         if (!Array.isArray(node)) return null

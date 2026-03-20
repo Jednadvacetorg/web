@@ -6,7 +6,7 @@
 
 2. **Use existing patterns** - Before writing new code, look at existing components in the codebase to understand conventions, naming patterns, and used libraries.
 
-3. **Check package.json** - Always verify available dependencies before importing or using external libraries.
+3. **Check package.json** - Always verify available dependencies before importing or using external libraries (`npm run lint`).
 
 4. **Run lint/typecheck** - After making changes, run the appropriate lint and typecheck commands to ensure code quality.
 
@@ -14,6 +14,7 @@
 
 ## Project-Specific Knowledge
 
+- Dependencies are managed by npm (don't puse pnpm etc.)
 - This is a Nuxt 4 application with `@nuxt/content` for content management
 - Blog articles are stored in `content/blog-articles/` with date prefixes in filenames (e.g., `20230816.bolt-karta-s-lnbits.md`)
 - The collection is defined in `content.config.ts`, check it when working with content files and keep correct frontmatter fields structure.
