@@ -5,7 +5,7 @@
   "scripts": {
     "prepare": "npx skills experimental_install -y",
     "build": "nuxt build",
-    "lint": "nuxt typecheck",
+    "typecheck": "nuxt typecheck",
     "dev": "rm -rf .data/content && nuxt dev --port 2103"
   },
   "dependencies": {

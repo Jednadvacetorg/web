@@ -6,9 +6,9 @@
 
 2. **Use existing patterns** - Before writing new code, look at existing components in the codebase to understand conventions, naming patterns, and used libraries.
 
-3. **Check package.json** - Always verify available dependencies before importing or using external libraries (`npm run lint`).
+3. **Check package.json** - Always verify available dependencies before importing or using external libraries.
 
-4. **Run lint/typecheck** - After making changes, run the appropriate lint and typecheck commands to ensure code quality.
+4. **Run lint/typecheck** - After making changes, run the appropriate typecheck commands to ensure code quality (`npm run typecheck`).
 
 5. **Read README.md** - Make sure to read the README file in the project root.
 
@@ -20,3 +20,4 @@
 - The collection is defined in `content.config.ts`, check it when working with content files and keep correct frontmatter fields structure.
 - When querying blog articles, use `path` for ordering (contains date in filename) since articles don't have a `date` frontmatter field
 - Production environment is hosted on the Cloudflare Workers
+- Do not execute write actions for GIT - no `git commit`, `git push`, `git merge`, `git rebase`, `git reset` etc.
