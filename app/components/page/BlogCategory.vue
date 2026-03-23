@@ -11,7 +11,7 @@ const categoryStem = computed(() => {
   return props.category?.path?.split('/').pop()
 })
 
-const { data: blogCategories } = await useBlogCategories()
+const { data: blogCategories } = await useDataBlogCategories()
 
 const { data: articles } = await useAsyncData('blog-articles-list', async () => {
   let query = queryCollection('blogArticles').order('path', 'DESC')

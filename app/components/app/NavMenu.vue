@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { NavigationMenuItem } from '@nuxt/ui'
 
-const { data: blogCategories } = await useBlogCategories()
+const { data: blogCategories } = await useDataBlogCategories()
 
 const items = computed<NavigationMenuItem[]>(() => [
   {

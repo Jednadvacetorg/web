@@ -1,6 +1,3 @@
-import { proxyToWpRoutes } from './shared/legacyProxy'
-
-
 export default defineNuxtConfig({
   compatibilityDate: "2026-03-01",
 
@@ -57,9 +54,6 @@ export default defineNuxtConfig({
 
   routeRules: {
     '/cntrsclc': { proxy: { to: 'https://analytics.jednadvacet.org/collect' } }, // Mask tracker collect URL to avoid blockers.
-    '/blog/**': { prerender: true },
-    '/blog': { prerender: true },
-    ...proxyToWpRoutes,
   },
 
   vite: {
