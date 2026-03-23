@@ -6,13 +6,12 @@ type PageResult =
   | { type: 'community'; community: CommunitiesCollectionItem }
 
 const route = useRoute()
-const path = route.path
 
-const { data: result } = await useAsyncData('page-' + path, async (): Promise<PageResult | null> => {
-  const page = await queryCollection('pages').path(path).first()
+const { data: result } = await useAsyncData('page-' + route.path, async (): Promise<PageResult | null> => {
+  const page = await queryCollection('pages').path(route.path).first()
   if (page) return { type: 'page', page }
 
-  const community = await queryCollection('communities').path(path).first()
+  const community = await queryCollection('communities').path(route.path).first()
   if (community) return { type: 'community', community }
 
   return null
@@ -22,9 +21,6 @@ if (!result.value) {
   throw createError({ statusCode: 404, statusMessage: 'Page not found', fatal: true })
 }
 
-definePageMeta({
-  layout: 'article'
-})
 </script>
 
 <template>
