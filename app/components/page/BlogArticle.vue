@@ -10,7 +10,7 @@ const config = useRuntimeConfig()
 
 <template>
   <Head>
-    <Title>{{ article.title }} | Jednadvacet</Title>
+    <Title>{{ article.title }}</Title>
     <Meta name="description" :content="article.description" />
     <Meta property="og:title" :content="article.title" />
     <Meta property="og:description" :content="article.description" />
@@ -18,15 +18,24 @@ const config = useRuntimeConfig()
     <Meta property="og:type" content="article" />
   </Head>
 
-  <UContainer>
+  <NuxtImg
+    :src="article.thumbnail"
+    :alt="article.title"
+    class="mt-[calc(-1*var(--ui-header-height))] -mb-10 w-full aspect-video max-h-[60vh] object-cover"
+  />
+  <div class="bg-default rounded-t-4xl h-20 -mb-18 z-40 relative" />
+
+  <UContainer class="relative z-40">
     <UPage>
       <UPageHeader
         :title="article.title"
         :description="article.description"
-      />
+      >
+      </UPageHeader>
+
+      <UContentToc :links="article.body?.toc?.links" :ui="{ root: 'lg:hidden' }" />
 
       <UPageBody>
-
         <ContentRenderer :value="article" class="prose dark:prose-invert" />
 
         <USeparator v-if="article.authors?.length" class="my-6" />
@@ -41,7 +50,7 @@ const config = useRuntimeConfig()
       </UPageBody>
 
       <template #right>
-        <UContentToc :links="article.body?.toc?.links" />
+        <UContentToc :links="article.body?.toc?.links" :ui="{ root: 'max-lg:hidden' }" />
       </template>
 
       <template #left>
