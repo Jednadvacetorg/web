@@ -1,6 +1,8 @@
 {
 	"name": "Jednadvacet Dev",
-	"dockerComposeFile": ["docker-compose.yml"],
+	"dockerComposeFile": [
+		"docker-compose.yml"
+	],
 	"service": "app",
 	"workspaceFolder": "/workspace",
 	"initializeCommand": "for id in $(docker ps -aq --filter 'status=removing'); do docker wait $id 2>/dev/null || true; done",
@@ -17,9 +19,12 @@
 				"sdras.vue-vscode-snippets",
 				"sst-dev.opencode",
 				"usernamehw.errorlens",
-				"vue.volar",
+				"vue.volar"
 			],
 			"settings": {
+				"[markdown]": {
+					"editor.wordWrap": "on"
+				},
 				"launch": {
 					"version": "0.2.0",
 					"configurations": [
@@ -43,9 +48,15 @@
 				"files.associations": {
 					"*.css": "tailwindcss"
 				},
-				"tailwindCSS.classAttributes": ["class", "ui"],
+				"tailwindCSS.classAttributes": [
+					"class",
+					"ui"
+				],
 				"tailwindCSS.experimental.classRegex": [
-					["ui:\\s*{([^)]*)\\s*}", "(?:'|\"|`)([^']*)(?:'|\"|`)"]
+					[
+						"ui:\\s*{([^)]*)\\s*}",
+						"(?:'|\"|`)([^']*)(?:'|\"|`)"
+					]
 				],
 				"tailwindCSS.includeLanguages": {
 					"vue": "html"
