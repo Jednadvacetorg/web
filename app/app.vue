@@ -18,7 +18,7 @@ useHead({
   },
   titleTemplate: '%s | Jednadvacet',
   link: [
-    { rel: 'canonical', href: 'https://jednadvacet.org' + path },
+    { rel: 'canonical', href: 'https://jednadvacet.org' + path.replace(/\/$/, '') || '/' },
   ],
 })
 </script>

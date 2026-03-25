@@ -4,10 +4,8 @@ const footerLinks = [
   { label: 'Twentyone World (EN)', to: 'https://twentyone.world/' },
   { label: 'Einundzwanzig (DE)', to: 'https://einundzwanzig.space/' },
   { label: 'Btc Map', to: 'https://btcmap.org/' },
-  { label: 'Kalendář', to: '/kalendar/' },
   { label: 'Mempool', to: 'https://mempool.jednadvacet.org' },
   { label: 'Explorer', to: 'https://explorer.jednadvacet.org' },
-  { label: 'Whitepaper', to: '/bitcoin/' },
   { label: 'Grafika', to: 'https://github.com/Jednadvacetorg/jednadvacet-grafika' }
 ]
 </script>
