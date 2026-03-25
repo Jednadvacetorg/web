@@ -6,6 +6,7 @@ const { data: blogCategories } = await useDataBlogCategories()
 const items = computed<NavigationMenuItem[]>(() => [
   {
     label: 'Města',
+    to: '/#mapa',
     children: [
       { label: 'Brno' },
       { label: 'Praha' },
@@ -15,6 +16,11 @@ const items = computed<NavigationMenuItem[]>(() => [
   {
     label: 'Kalendář',
     to: '/kalendar',
+    children: [
+      { label: 'Pro začátečníky' },
+      { label: 'Pro rodiče s dětmi' },
+      { label: 'Pokročilí' },
+    ],
   },
   {
     label: 'Podpořit a partneři',
@@ -38,6 +44,7 @@ const items = computed<NavigationMenuItem[]>(() => [
   },
   {
     label: 'O Jednadvacet',
+    to: '/lide',
     children: [
       { label: 'Lidé', to: '/lide' },
       { label: 'Medojedíci', to: '/medojedici' },
@@ -48,5 +55,5 @@ const items = computed<NavigationMenuItem[]>(() => [
 </script>
 
 <template>
-  <UNavigationMenu :items="items" />
+  <UNavigationMenu :items="items" content-orientation="vertical" />
 </template>
