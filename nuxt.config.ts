@@ -18,7 +18,9 @@ export default defineNuxtConfig({
     '@nuxt/ui',
     '@nuxt/image',
     '@nuxthub/core',
+    '@vueuse/nuxt',
     './shared/contentRedirectsModule',
+    'nuxt-studio'
   ],
 
   hub: {
@@ -49,11 +51,27 @@ export default defineNuxtConfig({
         },
       }
     },
+    prerender: {
+      routes: ['/'],
+      crawlLinks: true,
+    },
     preset: 'cloudflare_module',
   },
 
   routeRules: {
     '/cntrsclc': { proxy: { to: 'https://analytics.jednadvacet.org/collect' } }, // Mask tracker collect URL to avoid blockers.
+  },
+
+  studio: {
+    dev: true,
+    repository: {
+      provider: 'github',
+      owner: 'Jednadvacetorg',
+      repo: 'web',
+      branch: process.env.STUDIO_BRANCH_NAME || 'master',
+      private: false,
+    },
+    route: '/admin',
   },
 
   vite: {

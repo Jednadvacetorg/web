@@ -13,9 +13,12 @@ export default defineContentConfig({
       },
       schema: z.object({
         published: property(z.string().optional()).editor({ hidden: true }),
+        seo: property(z.any().optional()).editor({ hidden: true }),
+        navigation: property(z.any().optional()).editor({ hidden: true }),
         thumbnail: z.string(),
-        authors: z.array(z.string()).optional(),
+        title: z.string(),
         categories: z.array(z.string()).optional(),
+        authors: z.array(z.string()).optional(),
         redirect_from: z.array(z.string()).optional(),
       }).passthrough()
     }),
@@ -26,7 +29,11 @@ export default defineContentConfig({
         include: 'blog-categories/**',
         exclude,
         prefix: '/blog',
-      }
+      },
+      schema: z.object({
+        seo: property(z.any().optional()).editor({ hidden: true }),
+        navigation: property(z.any().optional()).editor({ hidden: true }),
+      }),
     }),
 
     communities: defineCollection({
@@ -35,7 +42,11 @@ export default defineContentConfig({
         include: 'communities/**',
         exclude,
         prefix: '/',
-      }
+      },
+      schema: z.object({
+        seo: property(z.any().optional()).editor({ hidden: true }),
+        navigation: property(z.any().optional()).editor({ hidden: true }),
+      }),
     }),
 
     pages: defineCollection({
@@ -44,7 +55,11 @@ export default defineContentConfig({
         include: 'pages/**',
         exclude,
         prefix: '/',
-      }
+      },
+      schema: z.object({
+        seo: property(z.any().optional()).editor({ hidden: true }),
+        navigation: property(z.any().optional()).editor({ hidden: true }),
+      }),
     }),
 
     people: defineCollection({
@@ -54,6 +69,8 @@ export default defineContentConfig({
         exclude,
       },
       schema: z.object({
+        seo: property(z.any().optional()).editor({ hidden: true }),
+        navigation: property(z.any().optional()).editor({ hidden: true }),
         avatar: z.string().optional(),
         donateLnAddress: z.string().optional(),
         links: z.array(z.string()).optional(),
