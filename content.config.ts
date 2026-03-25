@@ -13,7 +13,7 @@ export default defineContentConfig({
       },
       schema: z.object({
         published: property(z.string().optional()).editor({ hidden: true }),
-        thumbnail: property(z.string().optional()).editor({ hidden: true }),
+        thumbnail: z.string(),
         authors: z.array(z.string()).optional(),
         categories: z.array(z.string()).optional(),
         redirect_from: z.array(z.string()).optional(),
