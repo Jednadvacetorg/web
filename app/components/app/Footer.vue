@@ -3,10 +3,10 @@ const footerLinks = [
   { label: 'Dvadsaťjeden (SK)', to: 'https://dvadsatjeden.org' },
   { label: 'Twentyone World (EN)', to: 'https://twentyone.world/' },
   { label: 'Einundzwanzig (DE)', to: 'https://einundzwanzig.space/' },
-  { label: 'Btc Map', to: 'https://btcmap.org/' },
+  { label: 'Mapa', to: 'https://mapa.berubitcoin.cz/' },
   { label: 'Mempool', to: 'https://mempool.jednadvacet.org' },
   { label: 'Explorer', to: 'https://explorer.jednadvacet.org' },
-  { label: 'Grafika', to: 'https://github.com/Jednadvacetorg/jednadvacet-grafika' }
+  { label: 'Grafika', to: 'https://github.com/Jednadvacetorg/jednadvacet-grafika' },
 ]
 </script>
 
@@ -19,12 +19,18 @@ const footerLinks = [
         <div class="flex flex-wrap justify-center gap-x-8 gap-y-4 text-sm text-gray-500 dark:text-gray-400">
           <NuxtLink
             v-for="link in footerLinks"
-            :key="link.to"
             :to="link.to"
             class="hover:text-primary transition-colors"
           >
             {{ link.label }}
           </NuxtLink>
+          <NuxtLink
+            :to="`/_studio?redirect=${encodeURIComponent($route.path)}`"
+            external
+            class="hover:text-primary transition-colors"
+          >
+            <UIcon name="i-lucide-user" />
+        </NuxtLink>
         </div>
       </div>
     </UContainer>

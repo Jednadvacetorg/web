@@ -82,7 +82,6 @@ export default defineNuxtConfig({
       branch: process.env.STUDIO_BRANCH_NAME || 'master',
       private: false,
     },
-    route: '/admin',
   },
 
   vite: {
