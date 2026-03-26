@@ -27,6 +27,13 @@ export default defineNuxtConfig({
     db: 'sqlite',
   },
 
+  image: {
+    provider: process.env.NUXT_IMAGE_PROVIDER || (process.env.NODE_ENV === 'production' ? 'cloudflare' : 'ipx'),
+    cloudflare: {
+      baseURL: '/',
+    },
+  },
+
   nitro: {
     cloudflare: {
       deployConfig: true,
