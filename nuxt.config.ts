@@ -63,6 +63,9 @@ export default defineNuxtConfig({
       crawlLinks: true,
     },
     preset: 'cloudflare_module',
+    rollupConfig: {
+      external: ['sharp'], // sharp can't be bundled for Cloudflare Workers (no WASM support); pulled in transitively by nuxt-studio's IPX media handler
+    },
   },
 
   routeRules: {
