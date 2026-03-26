@@ -64,6 +64,7 @@ export default defineNuxtConfig({
     },
     prerender: {
       routes: ['/'],
+      ignore: ['/_studio'],
       crawlLinks: true,
     },
     preset: 'cloudflare_module',
