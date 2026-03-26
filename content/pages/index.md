@@ -5,4 +5,8 @@ redirect_from:
   - /bitcoin.pdf
 ---
 
-Homepage
+- Mapa
+- Nejbližší akce
+- Testimoniály
+- Rozcestník na blog (vybrané kategorie nebo články)
+- CTA na subscribe (socky, kalendář do sms a e-mailu)
