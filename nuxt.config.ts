@@ -35,10 +35,14 @@ export default defineNuxtConfig({
   },
 
   nitro: {
+    alias: {
+      'sharp': 'unenv/mock/proxy-cjs', // sharp can't run in Cloudflare Workers; pulled in transitively by nuxt-studio's IPX media handler
+    },
     cloudflare: {
       deployConfig: true,
       nodeCompat: true,
       wrangler: {
+        name: 'jednadvacetorg-web',
         assets: {
           html_handling: 'drop-trailing-slash',
         },
@@ -63,9 +67,6 @@ export default defineNuxtConfig({
       crawlLinks: true,
     },
     preset: 'cloudflare_module',
-    rollupConfig: {
-      external: ['sharp'], // sharp can't be bundled for Cloudflare Workers (no WASM support); pulled in transitively by nuxt-studio's IPX media handler
-    },
   },
 
   routeRules: {

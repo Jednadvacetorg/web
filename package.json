@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "prepare": "npx skills experimental_install -y",
-    "build": "nuxt build",
+    "build": "NODE_OPTIONS=--max-old-space-size=4096 nuxt build",
     "typecheck": "nuxt typecheck",
     "dev": "rm -rf .data/content && nuxt dev --port 2103"
   },
