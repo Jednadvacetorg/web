@@ -18,6 +18,6 @@
 - This is a Nuxt 4 application with `@nuxt/content` for content management
 - Blog articles are stored in `content/blog-articles/` with date prefixes in filenames (e.g., `20230816.bolt-karta-s-lnbits.md`)
 - The collection is defined in `content.config.ts`, check it when working with content files and keep correct frontmatter fields structure.
-- When querying blog articles, use `path` for ordering (contains date in filename) since articles don't have a `date` frontmatter field
+- When querying blog articles, use `id` for ordering (contains date in filename)
 - Production environment is hosted on the Cloudflare Workers
 - Do not execute write actions for GIT - no `git commit`, `git push`, `git merge`, `git rebase`, `git reset` etc.

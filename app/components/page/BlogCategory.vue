@@ -14,7 +14,7 @@ const categoryStem = computed(() => {
 const { data: blogCategories } = await useDataBlogCategories()
 
 const { data: articles } = await useAsyncData('blog-articles-list', async () => {
-  let query = queryCollection('blogArticles').order('path', 'DESC')
+  let query = queryCollection('blogArticles').order('id', 'DESC')
 
   if (categoryStem.value) {
     query = query.where('categories', 'LIKE', `%${categoryStem.value}%`)
@@ -76,6 +76,7 @@ const categoryDescription = computed(() => {
         :to="article.path"
         orientation="horizontal"
         variant="naked"
+        :ui="{ root: 'overflow-visible', header: 'border border-gray-600/10' }"
       />
     </UBlogPosts>
     <p v-else class="text-center text-gray-500 py-8">Žádné články</p>
